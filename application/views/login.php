@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
     <link rel="icon" href="https://www.gerflor.com.au/media/13-australia-website/quicksales-australia/faviconico.jpg">
 	<meta charset="utf-8">
-	<title>INKA Operasional</title>
+	<title>Login | INKA</title>
     <style type="text/css">
         *{
                 font-family: 'Lato', sans-serif;
@@ -49,32 +49,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   crossorigin="anonymous"></script>
 </head>
 <body>
-<form action="<?php echo base_url('index.php/login/submit'); ?>" method="post" style="margin-top:10%;">
+<form action="<?php echo base_url('login/submit'); ?>" method="post" style="margin-top:10%;">
     <div class="simple-login-container">
-        <h2>Silahkan Login</h2>
-        <br/>
+        <h2 style="padding-top:10px; padding-bottom:10px;">Silahkan Login</h2>
+        <?= $this->session->flashdata('message'); ?>
         <div class="row">
             <div class="col-md-12 form-group">
-                <input type="text" class="form-control" placeholder="Username" name="username">
+                <input type="text" class="form-control" placeholder="Username" name="username" value="<?= set_value('username');?>" required>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12 form-group">
-                <input type="password" placeholder="Enter your Password" class="form-control" name="password">
+                <input type="password" placeholder="Enter your Password" class="form-control" name="password" required>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12 form-group">
+                <?php
+                    if($this->session->flashdata('error')){ ?>
+                        <div class="alert alert-danger alert-dismissible"><?php echo $this->session->flashdata('error') ?>
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        </div>
+                        <?    }
+                ?>
                 <input type="submit" class="btn btn-block btn-login" value="Login" name="submit">
             </div>
         </div>
-        <?php
-            if($this->session->flashdata('error')){ ?>
-                <div class="alert alert-danger alert-dismissible"><?php echo $this->session->flashdata('error') ?>
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                </div>
-                <?    }
-        ?>
         <div class="row text-center">
             <div class="col-md-12">
             <label style="font-size:12px; text-align:center; color:#ccc;">Belum punya akun silahkan <span style="cursor:pointer; color:#3891c9;" id="register"> Register</span></label>
@@ -94,7 +94,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   $( document ).ready(function() {
     let x = $('#clicks');
     x.on('click', function(){
-      location.href = "index.php/frontpage/user/";
+      location.href = "frontpage/user/";
     });
 
     let register = $('#register');

@@ -19,5 +19,15 @@ class Muser extends CI_Model{
 		$query = $this->db->query($sql);
 		return json_encode($query->result());
 	}
+
+	function get_username($table, $field, $val){
+		$sql = "SELECT username FROM $table where $field = '$val'";
+		$query = $this->db->query($sql);
+		return json_encode($query->result_array());
+	}
+
+	function get_userkepda(){
+		
+	}
 }
 ?>

@@ -11,7 +11,6 @@
 				</tbody>
         </table>
 		</div>
-</body>
 <script>
   $( document ).ready(function() {
     $('#tables').DataTable( {
@@ -25,4 +24,3 @@
     });
   });
 </script>
-</html>

@@ -62,23 +62,24 @@ class Login extends CI_Controller {
 				'fullname' => $get_fullname_result
 			);
 
-			$this->session->set_userdata($data_session);
-			// $datas['username'] = $username;
+			$this->session->set_flashdata('key', 1);
+			$this->session->set_userdata($data_session);	
+			// $datas['username'] = $username;	
 			// $datas['alluser'] = $cek2;
-			redirect(base_url("index.php/admin"));
 			// $this->load->view('admin', $data_profile);
+			redirect(base_url("admin"));
 		}else{
 			if($username == ''){
 				$this->session->set_flashdata('error', 'Maaf, Login Gagal');
-				redirect(base_url("index.php/login"));
+				redirect(base_url("login"));
 			}
 			$this->session->set_flashdata('error', 'Maaf, Login Gagal');
-			redirect(base_url("index.php/login"));
+			redirect(base_url("login"));
 		}
 	}
   
 	public function logout(){
 		$this->session->sess_destroy();
-		redirect(base_url('index.php/login'));
+		redirect(base_url('login'));
 	}
 }

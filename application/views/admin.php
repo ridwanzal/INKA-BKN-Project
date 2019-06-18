@@ -77,13 +77,5 @@
 						<div class="panel-body">With supporting text below as a natural lead-in to additional content</div>
 					</div>
 				</div>
-
 			</div>
-
-</body>
-<script>
-  $( document ).ready(function() {
-    
-  });
-</script>
-</html>
+		</div>

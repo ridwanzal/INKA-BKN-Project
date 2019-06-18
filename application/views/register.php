@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>INKA Operasional</title>
+	<title>Register | INKA</title>
   <style type="text/css">
     *{
                 font-family: 'Lato', sans-serif;
@@ -40,6 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         font-size : 14px !important;
     }
 	</style>
+  <link rel="icon" href="https://www.gerflor.com.au/media/13-australia-website/quicksales-australia/faviconico.jpg">
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -49,7 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   crossorigin="anonymous"></script>
 </head>
 <body>
-<form action="<?php echo base_url('index.php/register/submit'); ?>" method="post" style="margin-top:5%;">
+<form action="<?php echo base_url('register/submit'); ?>" method="post" style="margin-top:5%;">
     <div class="simple-login-container">
         <h2>Silahkan Register</h2>
         <br/>
@@ -78,6 +79,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <input type="password" placeholder="Enter your Password" class="form-control" name="password2" required>
             </div>
         </div>
+        <?php
+            if($this->session->flashdata('error')){ ?>
+                <div class="alert alert-danger alert-dismissible"><?php echo $this->session->flashdata('error') ?>
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                </div>
+                <?    }
+        ?>
         <div class="row">
             <div class="col-md-12 form-group">
                 <input type="submit" class="btn btn-block btn-login" value="Register" name="submit">
