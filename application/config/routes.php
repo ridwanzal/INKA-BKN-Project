@@ -50,13 +50,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 // $route['default_controller'] = 'welcome';
-$route['default_controller'] = 'login';
+$route['default_controller'] = 'main';
+$route['phising'] = 'main/phising';
+$route['legitimate'] = 'main/legitimate';
+$route['task'] = 'main/taskhistory';
+$route['scan'] = 'main/scan';
+$route['dataset'] = 'main/dataset';
+$route['fetchraw'] = 'main/fetch_dataset';
+$route['deletealltask'] = 'main/deletealltask';
+$route['taskdetail'] = 'main/taskhistory_detail';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
-$route['user'] = 'frontpage/user/';
-$route['admin'] = 'admin';
-$route['register'] = 'register';
-$route['userlist'] = 'userlist';
-$route['userprofile'] = 'userprofile';
-$route['kegiatan'] = 'kegiatan';
-$route['addtask'] = 'addtask';
