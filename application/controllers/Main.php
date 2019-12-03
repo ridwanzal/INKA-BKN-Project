@@ -132,8 +132,9 @@ class Main extends CI_Controller {
 	public function fetch_dataset(){	
 			// cek apakah button analyze di klik oleh  user
 			$check_ifclick = isset($_POST["analyze"]);
-			if($check_ifclick){
-				$files_process = scandir('/opt/lampp/htdocs/phising_detector/assets/phishing/'); // scan direktori
+			$main_path = $_SERVER['DOCUMENT_ROOT'].'/phising_detector/phising_detector_public/assets/phishing/';
+;			if($check_ifclick){
+				$files_process = scandir($main_path); // scan direktori
 				$files = array_diff($files_process, array('.', '..')); // remove current dan prev direktori yang terhitung
 				$i = 0;
 				$concater;
@@ -177,16 +178,16 @@ class Main extends CI_Controller {
 						}else if($i <= 1000){
 							$concater = '';
 						}
-						$files2 = scandir('/opt/lampp/htdocs/phising_detector/assets/phishing/'.'P0'.$concater.$i);
+						$files2 = scandir($main_path.'P0'.$concater.$i);
 						foreach($files2 as $file2){
 							if($i <= 1000){
-								$files3 = scandir('/opt/lampp/htdocs/phising_detector/assets/phishing/'.'P0'.$concater.$i.'/URL');
+								$files3 = scandir($main_path.'P0'.$concater.$i.'/URL');
 								foreach($files3 as $file3){
 									// var_dump('P0'.$concater.$i.'&nbsp;'.$file3."<br/>\n");
-									$files4 = fopen('/opt/lampp/htdocs/phising_detector/assets/phishing/'.'P0'.$concater.$i.'/URL/URL.txt', 'r');
-									$data = fread($files4,filesize('/opt/lampp/htdocs/phising_detector/assets/phishing/'.'P0'.$concater.$i.'/URL/URL.txt'));
+									$files4 = fopen($main_path.'P0'.$concater.$i.'/URL/URL.txt', 'r');
+									$data = fread($files4,filesize($main_path.'P0'.$concater.$i.'/URL/URL.txt'));
 		
-									$files5 = scandir('/opt/lampp/htdocs/phising_detector/assets/phishing/'.'P0'.$concater.$i.'/RAW-HTML');
+									$files5 = scandir($main_path.'P0'.$concater.$i.'/RAW-HTML');
 									// $data2 = fread($files4_1,filesize('/opt/lampp/htdocs/phising_detector/assets/phishing/'.'P0'.$concater.$i.'/RAW-HTML/*'));
 									foreach($files5 as $file5){
 										$data2 = $file5;
